@@ -1,0 +1,34 @@
+title: BeardBro@4n6
+description: >- # this means to ignore newlines until "baseurl:"
+  I will help you learn some forensic stuffs.
+
+author:
+  name: "BeardBro"
+  email: "someone@somewebsite.somedomain"
+
+baseurl: /
+source: .
+destination: ./_site
+permalink: /:title
+paginate: 3
+paginate_path: /page/:num/
+
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+
+# Build settings
+theme: jekyll-theme-hacker
+plugins:
+  - jekyll-seo-tag
+  - jekyll-paginate
+
+
+owner : "Manjil"
+year : "2024"

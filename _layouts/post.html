@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<article>
+  
+  <h2><b>{{ page.title }}</b></h2>
+  <time datetime="{{ page.date | date_to_xmlschema }}" class="by-line">{{ page.date | date_to_string }}</time>
+  <div class="featured-image-post">
+    <img src="{{- page.image | relative_url -}}" alt="">
+  </div>
+  <div class="desc">{{ page.description }}
+    <br>
+    <a href="{{ page.link }}">Goto Lab</a>
+  </div>
+  <br>
+  {{ content }}
+
+</article>
+<footer><h3>{{page.signature}}</h3></footer>
+
