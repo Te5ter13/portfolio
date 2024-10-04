@@ -28,6 +28,8 @@ Let's get dive into the questions:
     **—> aws s3api list-buckets**
 
     ![image1](/assets/Bucket/image1.png)
+  <img alt="image1" src="/assets/Bucket/image1.png" width="700" height="467">
+
 
 
 3. What is the name of the first generated event -according to time?
