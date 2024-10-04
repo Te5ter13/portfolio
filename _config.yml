@@ -6,7 +6,7 @@ author:
   name: "BeardBro"
   email: "someone@somewebsite.somedomain"
 
-baseurl: /
+baseurl: www.manjilneupane.com.np
 source: .
 destination: ./_site
 permalink: /:title
