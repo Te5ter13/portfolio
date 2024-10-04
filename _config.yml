@@ -6,6 +6,10 @@ author:
   name: "Manjil"
   email: "someone@somewebsite.somedomain"
 
+<<<<<<< HEAD
+=======
+url: https://te5ter13.github.io/portfolio/ 
+>>>>>>> 5c9d915bcd930a4351ba4e04d80a2ec54bcad0f6
 baseurl: /
 source: .
 destination: ./_site
