@@ -29,6 +29,8 @@ Let's get dive into the questions:
 
     ![image1](/assets/Bucket/image1.png)
 
+    <img alt="image1 from img" class="body_image" loading="lazy" role="presentation" src="/assets/Bucket/image1.png" width="1000" height="250">
+
 
 3. What is the name of the first generated event -according to time?
 - When we view on the S3 bucket from the browser as we get the log file.
