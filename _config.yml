@@ -6,7 +6,7 @@ author:
   name: "BeardBro"
   email: "someone@somewebsite.somedomain"
 
-baseurl: /
+baseurl: https://te5ter13.github.io/portfolio/
 source: .
 destination: ./_site
 permalink: /:title
