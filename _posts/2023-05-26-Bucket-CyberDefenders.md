@@ -29,6 +29,7 @@ Let's get dive into the questions:
 
     ![image1](/assets/Bucket/bucket.png)
   <img alt="image1" src="/assets/Bucket/image1.png" width="700" height="467">
+  ![image1](assets/Bucket/bucket.png)
 
 
 
