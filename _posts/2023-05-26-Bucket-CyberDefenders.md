@@ -27,9 +27,9 @@ Let's get dive into the questions:
 
     **—> aws s3api list-buckets**
 
-    ![image1](./assets/Bucket/image1.png)
+    ![image1](/assets/Bucket/image1.png)
 
-  <img alt="image1 from img" class="body_image" loading="lazy" role="presentation" src="./assets/Bucket/image1.png" width="1000" height="250">
+  <img alt="image1 from img" class="body_image" loading="lazy" role="presentation" src="https://github.com/Te5ter13/portfolio/blob/master/assets/Bucket/image1.png" width="1000" height="250">
 
 
 
