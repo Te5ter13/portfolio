@@ -32,3 +32,10 @@ plugins:
 
 owner : "Manjil"
 year : "2024"
+
+
+#For CyberDen
+collections:
+  cyberden:
+    output: true
+    permalink: /cyberden/:title/
