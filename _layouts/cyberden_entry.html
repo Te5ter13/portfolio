@@ -17,3 +17,11 @@ layout: default
 </article>
 <footer><h3>{{page.signature}}</h3></footer>
 
+<script>
+  const images = document.querySelectorAll('.zoomable'); 
+  images.forEach(image => {
+      image.addEventListener('click', function() {
+          image.classList.toggle('zoomed'); 
+      });
+  });
+</script>

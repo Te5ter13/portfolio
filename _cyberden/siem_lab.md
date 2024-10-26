@@ -14,12 +14,3 @@ signature: Investigate. Decode. Educate
 <img class="zoomable" src="/assets/cyberden_image/siem/soon.jpg" alt="coming soon">
 
 
-<script>
-    const images = document.querySelectorAll('.zoomable'); // Select all images with the class 'zoomable'
-
-    images.forEach(image => {
-        image.addEventListener('click', function() {
-            image.classList.toggle('zoomed'); // Toggle zoom class on click
-        });
-    });
-</script>
