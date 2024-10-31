@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "RedLine - CyberDefenders"
+title:  "RedLine"
 date:   2023-06-15 00:55:38 +0545
-categories: CyberDefenders
+platform: "Cyberdefenders"
+read_time: 9
 image: /assets/RedLine/Image1.jpg
 description: Analyze a memory dump using Redline and Volatility tools. Trace the steps taken by the attacker on the compromised machine and determine how they managed to bypass the Network Intrusion Detection System "NIDS".
 link: https://cyberdefenders.org/blueteam-ctf-challenges/redline/

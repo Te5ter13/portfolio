@@ -1,13 +1,49 @@
 ---
+title: "Archive"
 layout: default
 ---
 
-<ul>
-    {% for post in paginator.posts %}
-      <li>
-          <h2><a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">{{ post.title }}</a></h2>
-          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>
-          <p>{{ post.description | strip_html | truncatewords:50 }}</p>
-      </li>
+<div class="container">
+  {% if site.posts.size > 0 %}
+    {% capture currentyear %}{{ 'now' | date: "%Y" }}{% endcapture %}
+    
+    {% assign previous_year = nil %}  <!-- Variable to track the previous year -->
+    
+    {% for post in site.posts %}
+      {% assign post_year = post.date | date: '%Y' %}  <!-- Get the current post year -->
+
+      {% if post_year != previous_year %}  <!-- Check if it's a new year -->
+        {% if previous_year != nil %}  <!-- Close the previous year's section if not the first year -->
+          </div> <!-- Close previous post-container -->
+        {% endif %}
+
+        <h3>{{ post_year }}</h3>  <!-- Display the new year -->
+        <div class="post-container">  <!-- Start a new container for this year -->
+      {% endif %}
+
+      <div class="post-card">
+        <a href="{{ post.url }}" class="card-link">
+          <img src="{{ post.image }}" alt="{{ post.title }}" class="card-image">
+          <div class="card-content">
+            <h3>{{ post.title }}</h3>
+            <p class="metadata">{{ post.platform }} | {{ post.date | date: "%B %d, %Y" }} — {{ post.read_time }} min read</p>
+            <p class="author">By Manjil</p>
+            <p class="description-text">{{ post.description | escape }}</p>
+          </div>
+        </a>
+      </div>
+
+      {% assign previous_year = post_year %}  <!-- Update previous year to the current post year -->
     {% endfor %}
-</ul>
+
+    {% if previous_year != nil %}  <!-- Close the last year's container -->
+      </div>
+    {% endif %}
+    
+  {% else %}
+    <p>No posts found.</p>  <!-- Message if no posts exist -->
+  {% endif %}
+</div>
+
+  
+  

@@ -3,3 +3,90 @@
 ---
 
 @import "base";
+
+
+
+/* # After making change in Archive as home*/ 
+
+.container {
+    padding: 5px; /* Reduced padding for the container */
+  }
+
+  .post-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 5px; /* Reduced gap between cards */
+  }
+
+  .post-card {
+    background-color: #333;
+    width: calc(25% - 10px); /* Set width to fit 4 cards per row with smaller spacing */
+    height: auto; /* Allow height to adjust based on content */
+    min-height: 100px; /* Reduced minimum height for smaller cards */
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    color: #fff;
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-card:hover {
+    transform: scale(1.03); /* Slightly smaller scale on hover */
+  }
+
+  .card-image {
+    width: 100%;
+    height: 50px; /* Further reduced height for the image */
+    object-fit: cover; /* Ensures image covers the entire area */
+  }
+
+  .card-content {
+    padding: 5px; /* Reduced padding */
+    flex-grow: 1; /* Allows content to take up available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items at the start */
+  }
+
+  .post-card h3 {
+    font-size: 0.9em; /* Adjust as needed */
+    margin: 0.2em 0; /* Reduced margin to bring it closer to metadata */
+    color: #66ff66;
+  }
+
+  .metadata {
+    font-size: 0.75em; /* Smaller font size */
+    color: #ccc;
+    margin-bottom: 1px; /* Reduced margin to bring it closer to the title */
+  }
+
+  .author {
+    font-size: 0.65em; /* Smaller font size */
+    color: #999;
+  }
+  
+  .description-text {
+    padding: 0.5px;
+    color: #dedfd5; /* Change this to your desired color */
+    font-size: 14px; /* Adjust the font size */
+    font-style: italic; /* Optional: make it italic */
+    margin-top: 0; /* Set margin-top to 0 to eliminate extra space */
+    min-height: 2.5em; /* Set a minimum height for two lines */
+    overflow: hidden; /* Hide overflow if content exceeds */
+    display: -webkit-box; /* Necessary for multi-line truncation */
+    -webkit-box-orient: vertical; /* Vertical orientation for the box */
+    -webkit-line-clamp: 4; /* Limit to 2 lines */
+  }
+  
+  .card-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .card-link:hover .read-more {
+    color: #fff;
+  }

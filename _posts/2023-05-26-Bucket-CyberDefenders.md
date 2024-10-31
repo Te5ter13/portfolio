@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "Bucket - CyberDefenders"
-date:   2023-05-26 00:55:38 +0545
-categories: CyberDefenders
+title:  "Bucket"
+date:   2023-05-26 00:55:38 +0545\
+platform: "Cyberdefenders"
+read_time: 10
 image: /assets/Bucket/bucket.png
 description: Welcome, Defender! As an incident responder, we’re granting you access to the AWS account called “Security” as an IAM user. This account contains a copy of the logs during the time period of the incident and has the ability to assume the “Security” role in the target account so you can look around to spot the misconfigurations that allowed for this attack to happen.
 link: https://cyberdefenders.org/blueteam-ctf-challenges/84#nav-questions
