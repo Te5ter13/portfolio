@@ -6,6 +6,7 @@
 
 
 
+
 /* # After making change in Archive as home*/ 
 
 .container {
@@ -89,4 +90,28 @@
 
   .card-link:hover .read-more {
     color: #fff;
+  }
+
+
+
+ 
+  
+  
+  /* Add responsive styles */
+  @media (max-width: 1024px) {
+    .post-card {
+      width: calc(33.33% - 15px); /* 3 cards per row on tablets */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .post-card {
+      width: calc(50% - 15px); /* 2 cards per row on smaller tablets */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .post-card {
+      width: 100%; /* 1 card per row on mobile phones */
+    }
   }
