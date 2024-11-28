@@ -27,28 +27,25 @@ Let's get dive into the questions:
     But it gives the bucket with the creation date according to the “Global” date and time but we are asked to solve with the UTC time module so,
 
     **—> aws s3api list-buckets**
-
-    ![image1](/assets/Bucket/image1.png)
-
-    <img alt="image1 from img" class="body_image" loading="lazy" role="presentation" src="/assets/Bucket/image1.png" width="1000" height="250">
+    <img class="zoomable" src="/assets/Bucket/image1.png" alt="image1">
 
 
 3. What is the name of the first generated event -according to time?
 - When we view on the S3 bucket from the browser as we get the log file.
 
-    ![image2](/assets/Bucket/image2.png)
+    <img class="zoomable" src="/assets/Bucket/image2.png" alt="image2">
 
     Now we need to access these logs files from AWS-cli so, we need to extract all those logs on our own terminal. We have a “sync” command to extract those logs file from bucket as:
     
     **—> aws s3 sync s3://flaws2-logs**
 
-    ![image3](/assets/Bucket/image3.png)
+    <img class="zoomable" src="/assets/Bucket/image3.png" alt="image3">
 
     And now we get the “AWSLogs” folder on current directory. Further gaining those files according to the created date we can use the “find” command. But before that when we view those files under the directory, the files seems to be zipped so for that we also need to unzip them.
 
     → find AwsLogs -type f -exec gunzip “{|” \;
 
-    ![image4](/assets/Bucket/image4.png)
+    <img class="zoomable" src="/assets/Bucket/image4.png" alt="image4">
 
     These files are on json format. So we need a special command “jq” which is used to execute the json format file.
 
@@ -56,13 +53,13 @@ Let's get dive into the questions:
 
     To filter the output on sorted order and find only the unique output we can do :
     
-    ![image5](/assets/Bucket/image5.png)
+    <img class="zoomable" src="/assets/Bucket/image5.png" alt="image5">
 
     Here we the the eventTime of a log file. Now based on the created time we can easily find the first generated event using “grep” command as:
 
     **→ grep -r -F '"eventTime": "2018-11-28T22:31:59Z"’ AWSLogs**
 
-    ![image6](/assets/Bucket/image6.png)
+    <img class="zoomable" src="/assets/Bucket/image6.png" alt="image6">
 
     See, we got the eventName:
 
@@ -71,11 +68,11 @@ Let's get dive into the questions:
 4. What source IP address generated the event dated 2018-11-28 at 23:03:20 UTC?
 - I just used the grep command to search for date and look out for the IP address on that generated output.
 
-    ![image7](/assets/Bucket/image7.png)
+    <img class="zoomable" src="/assets/Bucket/image7.png" alt="image7">
 
     Here we get the log file and further using this json file we can get the IP address as:
 
-    ![image8](/assets/Bucket/image8.png)
+    <img class="zoomable" src="/assets/Bucket/image8.png" alt="image8">
 
 
     **→ 34.234.236.212**
@@ -84,7 +81,7 @@ Let's get dive into the questions:
 5. Which IP address does not belong to Amazon AWS infrastructure?
 - Similarly like above command we get another IP address too. So when we look into the IP we get:
 
-    ![image9](/assets/Bucket/image9.png)
+    <img class="zoomable" src="/assets/Bucket/image9.png" alt="image9">
 
     Hence, it does not show any AWS infrastructure.
 
@@ -119,7 +116,7 @@ Let's get dive into the questions:
 
     Now just run the python file and get the output
 
-    ![image10](/assets/Bucket/image10.png)
+    <img class="zoomable" src="/assets/Bucket/image10.png" alt="image10">
 
     There’s the userName:
 
@@ -128,7 +125,7 @@ Let's get dive into the questions:
 7. What was the first request issued by the user 'level1'?
 - I simply search for the log file with “level1” filter  and then sort the list. We get the list of json files along with the created date and time. Further we can view those event as:
 
-    ![image11](/assets/Bucket/image11.png)
+    <img class="zoomable" src="/assets/Bucket/image11.png" alt="image11">
 
     We finally get the first created event
 

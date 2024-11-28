@@ -39,3 +39,15 @@ collections:
   cyberden:
     output: true
     permalink: /cyberden/:title/
+  notes:
+    output: true
+    permalink: /notes/:name/
+  certificates:
+    output: true
+    permalink: /certificates/:name/
+  forensics:
+    output: true
+    permalink: notes/digital-forensics/:title/
+
+
+

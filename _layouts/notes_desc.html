@@ -1,0 +1,17 @@
+---
+layout: default
+---
+
+<article>
+  
+  <h2><b>{{ page.title }}</b></h2>
+  <div class="featured-image-post">
+    <img src="{{- page.image | relative_url -}}" alt="">
+  </div>
+  <div class="desc">{{ page.description }}
+  </div>
+  <br>
+  {{ content }}
+
+</article>
+<footer><h3>{{page.signature}}</h3></footer>
