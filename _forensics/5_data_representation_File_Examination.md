@@ -1,6 +1,6 @@
 ---
 layout: notes_desc
-title: "Lab 2: How To Acquire Data Using Linux"
+title: "Data representation and File Examination"
 description: "Acquire Data using Linux"
 image: /assets/notes_image/forensics/data_rep/1.png
 signature: Investigate. Decode. Educate
