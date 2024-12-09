@@ -1,14 +1,10 @@
 ---
 layout: notes_desc
 title: "Data representation and File Examination"
-description: "Acquire Data using Linux"
+description: "We here learn about the blocks used to build a file (bites and bytes) and different ways a computer can represent them. And identify files and their structure, subsequently identifying real files contents from disguised ones."
 image: /assets/notes_image/forensics/data_rep/1.png
 signature: Investigate. Decode. Educate
 ---
-We here will learn about 
-
-- the blocks used to build a file (bites and bytes) and different ways a computer can represent them.
-- to identify files and their structure, subsequently identifying real files contents from disguised ones.
 
 **Difference between Kilobit and kilobyte**
 
