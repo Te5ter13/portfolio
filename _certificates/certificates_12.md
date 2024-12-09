@@ -1,3 +1,3 @@
 ---
-image: "/assets/notes_image/certificates/nmap.jpg"
+image: "/assets/notes_image/certificates/threat_con.png"
 ---
