@@ -24,7 +24,7 @@ An enthusiastic cybersecurity learner with a focus on the Blue Team, specializin
 | Organization | Designation         | Year |
 |:-------------|:------------------|:------|
 | CryptoGen Nepal      | Associate SOC Engineer | 2023-2024  |
-| PwnBot |Web Pentester and QA   | 2022-2023  |
+| PwnBot Systems |Web Pentester and QA   | 2022-2023  |
 
 
 <br>

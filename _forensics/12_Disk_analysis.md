@@ -2,7 +2,7 @@
 layout: notes_desc
 title: "Disk Analysis - WinHex"
 description: "To understand the disks, we need a tool and WinHex is there for you!!!!!"
-image: /assets/notes_image/forensics/disk_analysis/1.png
+image: /assets/notes_image/forensics/disk_analysis/winhex.jpg
 signature: Investigate. Decode. Educate
 ---
 WinHex is one of the best tool for the disk analysis which is created by X-Way’s. The dashboard sample:

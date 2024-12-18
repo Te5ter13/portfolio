@@ -20,7 +20,7 @@ layout: default
         <h3>{{ post_year }}</h3>  <!-- Display the new year -->
         <div class="post-container">  <!-- Start a new container for this year -->
       {% endif %}
-
+          
       <div class="post-card">
         <a href="{{ post.url }}" class="card-link">
           <img src="{{ post.image }}" alt="{{ post.title }}" class="card-image">
@@ -32,7 +32,7 @@ layout: default
           </div>
         </a>
       </div>
-
+      
       {% assign previous_year = post_year %}  <!-- Update previous year to the current post year -->
     {% endfor %}
 
