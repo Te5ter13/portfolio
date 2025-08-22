@@ -48,6 +48,9 @@ collections:
   forensics:
     output: true
     permalink: notes/digital-forensics/:title/
+  flare:
+    output: true
+    permalink: notes/flare-on/:title/
 
 
 

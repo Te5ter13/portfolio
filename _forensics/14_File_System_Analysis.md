@@ -506,3 +506,288 @@ For example: Suppose we have another file name eLearnSecurity DFPv2.doc in same 
     → **File Allocation**: We need to know what will happen and how file will allocated a space when it is created. Let’s create a file name **Pic.jpg** inside a **Test** directory. The **Test** directory is directly under the root of the file system. It can be viewed as:
 
     <img class="zoomable" src="/assets/notes_image/forensics/file_system/49.png" alt="image49">
+
+    <ins>Conclusion:</ins>
+    1. From the boot sector we react out to Data Area, FATs, and the Root Directory
+    2. From root directory, we traverse the Test directory which its content is at cluster#5.
+    3. We find the entry for the file Pic.jpg
+    4. The entry says that the file’s first cluster is at cluster #11.
+    5. From FAT we know how to reach to cluster#11, and since the FAT entry for cluster#11 holds the number 12, this means that file has another cluster found at cluster#12.
+    6. We traverse that cluster the same way we did before until we reach to the EOF marker, which tell us the end of the file and no more clusters are allocate for this file.
+
+    <ins>Deleting a file:</ins>
+    Whenever a file is deleted, following will happen:
+
+    1. The system changes as we mentioned before the first character in the file name, to 0xE5.
+    2. The cluster entries for the file in FAT are all zeroed out.
+    3. The starting cluster in the directory entry is left as it is.
+    4. The contents of the file (in clusters) still exists on the disk (until their clusters are used again).
+
+    Let’s explore with example, by deleting the previously created image file Pic.jpg:
+
+    <img class="zoomable" src="/assets/notes_image/forensics/file_system/50.png" alt="image50">
+
+### <ins>NTFS File System Analysis:</ins>
+FAT system was a solid solution with few limitations for a long time, but operating systems have evolved and user requirements are totally different today. This lead to new system that could both solve limitations in previously used systems and support new changes required  by the Operating System itself or user.
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/51.png" alt="image51">
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/52.png" alt="image52">
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/53.png" alt="image53">
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/54.png" alt="image54">
+
+
+NTFS size limits:
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/55.png" alt="image55">
+
+**`NTFS doesn’t use the same file system separation schemas that structure the disk in a specific way, as we saw in FAT (Boot, FATs, Data), because everything within the NTFS file system is a file.`**
+
+*Hence, there is no need to separate or divide the physical disk structure into different parts (system and data).*
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/56.png" alt="image56">
+
+As it is mentioned that NTFS based on files and not on dividing the volumes into separate spaces, even though some files will be located in specific places, but they are still files.
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/57.png" alt="image57">
+
+<ins>NTFS Structure:</ins>
+
+NTFS uses a number of different metadata files to implement the file system’s data structures. These files create the whole NTFS file system. The main file is Master File Table (MFT) which is named as **$MFT.** We can think it as an array of records.
+
+*Each file within the NTFS file have either one or more records (entry), even the MFT itself. And yes, it has an entry for itself within the MFT file. The number of records for each file depends on the size of the file.*
+
+`To prevent MFT from being fragmented (file not being contiguous on disk), the NTFS files system reserve some space for the MFT. This space is preserved by default around 12.5% of total disk space. This space is also known as MTF Zone. There are also the other settings such as 25%, 37.5% and 50%.`
+
+*Note: If the MFT get fragmented, then the MFT Zone gets filled up.*
+
+In real scenario, when we formatted a HDD (assume of 100GB) , we find that around 12.5GB are already gone from the disk space. We cannot see them, because they are already reserved for NTFS file system.
+
+The main NTFS metadata files are:
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/58.png" alt="image58">
+MFT reserves the first 15 entries for the file system metadata files.
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/59.png" alt="image59">
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/60.png" alt="image60">
+
+<ins>Volume Boot Record (VBR)- $Boot(7):</ins>
+
+VBR is found in the $Boot file and record entry number 7. (Look at NTFS file metadata fig above).  This file will help the system to locate the MFT within the disk. As we read, $MFT is a file which could be located anywhere on the disk. **The VBR helps to locate it.**
+
+The size of VBR of NTFS volume depends on the cluster size used for the volume.
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/61.png" alt="image61">
+
+So, if we have cluster size of 4KB, then file system will allocate 8 sectors for VBR.
+
+The contents of the $Boot NTFS VBR is shown below as:
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/62.png" alt="image62">
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/63.png" alt="image63">
+
+The BPB and Extended BPB are further analyzed to give the following!
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/64.png" alt="image64">
+
+The details of the Volume Boot Record (VBR) and BIOS Parameter Block (BPB):
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/65.png" alt="image65">
+
+→ `Jump Instruction`: It holds the jump boot code command:
+
+    EB 52 → jmp 00000054
+    90 → NOP
+
+→ `OEM ID`: It is a Manufacturer ID, which will be NTFS
+
+→ `Number of bytes per sector`
+
+→ `Number of sector per cluster`
+
+→ `Reserved number of sectors`. This will always be zero because NTFS always has the boot sector at the beginning of the volume.
+
+→ `Media descriptor` is used to describe the media used. This will usually be 0xF8 on HDD.
+
+→ Total number of sectors has the total number of sectors in the volume
+
+→ `Logical Cluster number` for the $MFT file: Logical cluster address of the $MFT file
+
+→ `Logical Cluster number for the $MFTMirror File`: Logical cluster address of the $MFTMirror file.
+
+→ `Cluster per MFT Record`: Holds the size of each MFT entry
+
+→ `Cluster per Index`: Holds the size of the index buffer used to allocate directory space.
+
+→ `Volume Serial Number`: Holds the serial number of the volume.
+
+
+<br>
+Now analyze the MFT(MFT):
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/66.png" alt="image66">
+
+Further more:
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/67.png" alt="image67">
+
+`MFT is an index to each file found within the volume. Each MFT record holds a set of records too. We can think of it as an array of records, and each record is another array of records.`
+
+`The records within the MFT record are called` **`attributes.`**  Each attribute is used to store a different type of information.
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/68.png" alt="image68">
+
+NTFS file system uses a different number of attributes, and each attribute is used to store some different type of information. Any single MFT entry/record will have different number of attributes. This depends upon the nature of the entry itself.
+
+Let’s first explore the NTFS file system attributes:
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/69.png" alt="image69">
+
+NTFS MFT Entry:
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/70.png" alt="image70">
+
+Now let’s analyze the contents of entry (record) which is built-up using a header, a number of variable length attributes and an end marker. The marker is usually 0xFFFFFFFF.
+
+→ `Entry Signature`: Every file in NTFS file system has at least a single MFT entry (or record) which is around 48 bytes.
+
+*Each entry starts with the signature **FILE** or in Hex (**0x46494C45)**. If the entry is usable, then it is marked with **BAAD.***
+
+→ The **two bytes** at offset 4 are used for the fixup array.
+
+→ The next **two bytes** are for the entries in the fixup array
+
+<ins>**Fixup Arrays:**</ins>
+
+As clusters are formed from number of sectors, and sectors could be corrupted. NTFS file system uses Fixup Array technique to ensure the sector is not corrupted and the data’s integrity is maintained. In other words, `It is used to detect if any errors are found in cluster`.
+
+Each sector will have **Fixup Array** which is stored in an **Update Sequence Array.**
+
+<ins>**How is it Used?**</ins>
+
+The header of each entry contains an **Update Sequence Number** and **a Buffer.** The last two bytes of each sector of entry are copied into the buffer (Update Sequence Array) and two bytes are replaced with the **Update Sequence Number.**
+
+When an entry is read, the **Update Sequence Number** is read from the header and compared with the last two bytes of each sector. If a match is found, then it will copy the bytes in the buffer back to their original location.
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/71.png" alt="image71">
+
+Fixup - After:
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/72.png" alt="image72">
+
+`Fixup arrays` are not only used in File entries of $MFT, they are also used in:
+
+    INDX entries in directories and other indexes.
+
+    RCRD and RSTR entries in the $LogFile
+
+
+→ The next **eight bytes** are used for the $LogFile Sequence Number. This is changed every time the record is modified.
+
+→ `Sequence Number`: holds the number of time the MFT entry has been reused. It will be incremented with one every time the entry is used and released.
+
+→ `Hard Link Count`: holds the number of hard links i.e the number of directory entries referencing this entry. This is used in base entries only.
+
+→ `Offset to the first Attribute`: Holds the position value of the first attribute of the entry.
+→ `Flags`: Holds any of the following status information values:
+
+    - 0x01 → Entry is in use
+    - 0x02 → Entry is for a directory
+    - 0x03 → Unknown
+    - 0x04 → Unknown
+→ `Real size of the MFT entry (record)`: Holds the actual size of the MFT entry. The size will be padded to an 8 byte boundary.
+
+→ `Allocated size of the MFT entry (record)`: Holds the size of each MFT entry within MFT. It is usually 1024 bytes.
+
+→ `File reference to the base MFT entry (record)`: It will be zero when entry is for the base MFT entry. When it is not zero, it means it is holding the value referencing the Base MFT Entry. The Base MFT entry contains all the information about the extension entry, which is stored in ATTRIBUTE_LIST attribute.
+    - Value (zero) : Base entry
+    - Value (non-zero): Reference to base entry
+
+→ `Next Attribute ID`: Holds the value that is assigned to the next Attribute added to this MFT entry. The value is incremented each time it is used and *every time the MFT entry is reused this ID is set back to zero*. The first instance number is always zero.
+
+→ `Align to 4 bytes boundary & number of this MFT Entry (Record)`: The align and number of this MFT Entry are both values used in old versions of the Windows Operating System (Windows XP).
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/73.png" alt="image73">
+
+
+**<ins>MFT File Reference Number:</ins>**
+
+Each MFT has a **Sequential Address** which start from zero (as $MFT itself has the entry number zero). Each MFT addresses uses a 6 byte number (**48 bits**) and is preceded with 2 bytes for **MFT Sequence Number**. The combination of both the MFT entry number and MFT sequence number  is called <ins>MFT Reference Number<ins>.
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/74.png" alt="image74">
+
+*`This address is used whenever a structure needs to refer to a record in the MFT.`*
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/75.png" alt="image75">
+
+`Note: The MFT sequence number will be incremented each time an MFT file entry is reused. Even though the MFT would create a new entry for a new file, the entries that no longer belong to a file, (may it was deleted), will be reused. When this happens the sequence number gets incremented, For example: from 1 to 2.`
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/76.png" alt="image76">
+
+### <ins>NTFS Attributes:</ins>
+The attributes are used to store different information(name, timestamps, content etc.) and most of them are found within MFT entry itself. The general layout:
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/77.png" alt="image77">
+
+Each attribute has a header and content. Attributes could be either **resident** or **non-resident.**
+
+→ Resident attributes have header and it content come directly after it. Examples are: $STANDARD_INFORMATION and $FILENAME.
+
+→ Non-Resident attributes are stored in separate clusters of the disk, which means their cluster is not within the MFT entry itself. Example is: $DATA attribute. An attribute named $ATTRIBUTE_LIST will be used for tracking.
+
+`If a file size is less than 700 bytes then the attribute is resident, if greater than 700 bytes then it’s non-resident.`
+
+Despite of being resident or non-resident, both will have 16 byte common attribute header.
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/78.png" alt="image78">
+
+→ The first four bytes (Attribute type identifier) holds the attribute type identifier.
+
+→ Then next four bytes (Length of attribute) have the total length of the attribute. This value includes the length of header.
+
+→ Flag is used to check whether the attribute is resident or not. A non resident flag will hold the value of 0x01
+
+→ The length of the attribute name uses 1 byte, and the offset to the name’s location or position uses 2 bytes.
+
+→ For attribute flag, we have three types:
+    - 0x0001 → Compressed
+    - 0x4001 → Encrypted
+    - 0x8001 → Sparse
+
+→ Every attribute have a unique identifier that is used to distinguished between all attributes that could be found within the MFT entry.
+
+The structure of **<ins>resident attribute header</ins>** is:
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/79.png" alt="image79">
+
+→ Attribute length describes the size of the attribute and the offset holds where this attribute is located.
+
+→ Padding holds a 0x00 value, and used for padding only.
+
+→ If the attribute has a name, then it will be in the last 8 bytes.
+
+A **<ins>non-resident attribute header</ins>** will have:
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/80.png" alt="image80">
+
+<ins>`Virtual Cluster Number (VCN):`</ins>
+
+It describes the sequence number of cluster associated with a file or attributes regardless of where it is in the file system.
+
+<ins>`Logical Cluster Number (LCN):`</ins>
+
+This is a cluster number that is relative to the first cluster after the VBR of the volume.
+
+*`Starting and ending VCNs are used when multiple MFT entries are needed to describe a single attribute. The offset (position) of the runlist (it is a sequence of cluster runs that contain the data for the file) is relative to the start of the attribute.`*
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/81.png" alt="image81">
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/82.png" alt="image82">
+
+In this example, we can see that the clusters are not in ascending order. This can happen when a space for a file got unallocated in previous location on the volume.
+
+**<ins>Standard Information Attribute ($SIA) - [0x10]:</ins>**
+This attributes stores the standard file information such as size, security, timestamps, logging info etc. It has minimum size of 48 bytes and maximum size of 72 bytes. `It will always be a resident attribute`, which means it will always be stored within the MFT entry itself. It uses an attribute ID of <u>0x10</u>.
+
+One important thing to remember is: *`Each attribute has an attribute header. The header is used to store the information about the attribute:`*
+
+1. Type
+2. Size
+3. Name (Optional)
+4. Resident or Non-resident
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/83.png" alt="image83">
+
+File permissions are analyzed into the following:
+
+<img class="zoomable" src="/assets/notes_image/forensics/file_system/84.png" alt="image84">
