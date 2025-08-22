@@ -1,5 +1,5 @@
 ---
-#
+
 ---
 
 @import "base";
@@ -17,7 +17,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 13px; /* Reduced gap between cards */
+    gap: 11px; /* Reduced gap between cards */
   }
 
   .post-card {
