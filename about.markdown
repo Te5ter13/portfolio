@@ -11,102 +11,97 @@ permalink: /whoami/
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
 
-
-
-
   <main class="container main-content">
     <div  class="social-media-icons">
     <a href="https://www.linkedin.com/in/manjil-neupane-623a681a4/" class="fa fa-linkedin"></a>
     <a href="https://x.com/Manjil1001" class="fa fa-twitter"></a>
     <a href="https://github.com/Te5ter13" class="fa fa-github"></a>
-  </div>
+    </div>
         <!-- Home Section -->
-      <section id="home" class="section">
-          <div class="terminal-prompt">
-              <div class="terminal-header">
-                  <div class="terminal-dots">
-                      <div class="dot red"></div>
-                      <div class="dot yellow"></div>
-                      <div class="dot green"></div>
-                  </div>
-                  <div class="terminal-title">manjil@cybersec-research</div>
-              </div>
-              <div class="command-line">whoami</div> 
-              <div class="terminal-output">Cybersecurity Researcher | Malware Analyst | CTF Player <br></div>
-              <div class="command-line">ls -la recent_work/</div>
-              <div class="terminal-output">
-                  drwxr-xr-x  5 manjil manjil  4096 Aug 19 2025 .<br>
-                  drwxr-xr-x 15 manjil manjil  4096 Aug 19 2025 ..<br>
-                  -rw-r--r--  1 manjil manjil  2048 Aug 10 2025 htb_machine_analysis.md<br>
-                  -rw-r--r--  1 manjil manjil  1024 Aug 17 2025 malware_sample_report.pdf<br>
-                  -rw-r--r--  1 manjil manjil  3072 Aug 16 2025 flareon_challenges.py<br>
-                  -r-r-----  1 root root  1800 Aug 08 2024 certificates<br>
-              </div>
-              <div class="command-line">jobs -l</div>
-              <div class="terminal-output">
-              <table>
-                  <tr>
-                    <th>Organization</th>
-                    <th>Designation</th>
-                    <th>Year</th>
-                  </tr>
-                  <tr>
-                    <td>Lübeck</td>
-                    <td>Research Assistant</td>
-                    <td>Present</td>
-                  </tr>
-                  <tr>
-                    <td>CryptoGen Nepal</td>
-                    <td>Associate SOC Engineer</td>
-                    <td>2023-2024</td>
-                  </tr>
-                  <tr>
-                    <td>PwnBOT Systems</td>
-                    <td>Web Pentester and QA</td>
-                    <td>2022-2023</td>
-                  </tr>
-                </table>  
-          </div>
-          <div class="command-line">$ sudo cat recent_work/certificates</div>
-          <div id="terminal"> 
-            [sudo] password for manjil:<span class="loading" id="dot"></span>
+    <section id="home" class="section">
+        <div class="terminal-prompt">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+                <div class="terminal-title">manjil@cybersec-research</div>
             </div>
-            <div id="table" class="hidden">
-              <table>
-                  <tr>
-                    <th>Certification</th>
-                    <th>Vendor</th>
-                    <th>Issued</th>
-                    <th>Expires</th>
-                    <th>Link</th>
-                  </tr>
-                  <tr>
-                    <td>eCDFP(eLearn Certified Digital Forensic Professionals)</td>
-                    <td>INE Security</td>
-                    <td>May 3, 2024</td>
-                    <td>Never</td>
-                    <td><a href="https://certs.ine.com/fb951e24-aa1f-4d4d-9abb-2f9d0570e6fa">Certification</a></td>
-                  </tr>
-                  <tr>
-                    <td>CC (Certified In CyberSecurity)</td>
-                    <td>(ISC)2</td>
-                    <td>July 27,2023</td>
-                    <td>July 2024</td>
-                    <td>Unavailable😭😭😭</td>
-                  </tr>
-                  <tr>
-                    <td>CND (Certified Network Defender)</td>
-                    <td>EC-Council</td>
-                    <td>July 2022</td>
-                    <td>Jul 2025</td>
-                    <td><a href="https://aspen.eccouncil.org/VerifyBadge?type=certification&a=xsTcEv4MD8WAnXxp6IHfHSgorW9V3ZbiCaOVob/8oa0=">Certification</a></td>
-                  </tr>
-                </table>
+            <div class="command-line">whoami</div> 
+            <div class="terminal-output">Cybersecurity Researcher | Malware Analyst | CTF Player <br></div>
+            <div class="command-line">ls -la recent_work/</div>
+            <div class="terminal-output">
+                drwxr-xr-x  5 manjil manjil  4096 Aug 19 2025 .<br>
+                drwxr-xr-x 15 manjil manjil  4096 Aug 19 2025 ..<br>
+                -rw-r--r--  1 manjil manjil  2048 Aug 10 2025 htb_machine_analysis.md<br>
+                -rw-r--r--  1 manjil manjil  1024 Aug 17 2025 malware_sample_report.pdf<br>
+                -rw-r--r--  1 manjil manjil  3072 Aug 16 2025 flareon_challenges.py<br>
+                -r-r-----  1 root root  1800 Aug 08 2024 certificates<br>
+            </div>
+            <div class="command-line">jobs -l</div>
+            <div class="terminal-output">
+            <table>
+                <tr>
+                <th>Organization</th>
+                <th>Designation</th>
+                <th>Year</th>
+                </tr>
+                <tr>
+                <td>Lübeck</td>
+                <td>Research Assistant</td>
+                <td>Present</td>
+                </tr>
+                <tr>
+                <td>CryptoGen Nepal</td>
+                <td>Associate SOC Engineer</td>
+                <td>2023-2024</td>
+                </tr>
+                <tr>
+                <td>PwnBOT Systems</td>
+                <td>Web Pentester and QA</td>
+                <td>2022-2023</td>
+                </tr>
+            </table>  
+        </div>
+        <div class="command-line">$ sudo cat recent_work/certificates</div>
+        <div id="terminal">[sudo] password for manjil:<span class="loading" id="dot"></span>
+        </div>
+        <div id="table" class="hidden">
+            <table>
+                <tr>
+                <th>Certification</th>
+                <th>Vendor</th>
+                <th>Issued</th>
+                <th>Expires</th>
+                <th>Link</th>
+                </tr>
+                <tr>
+                <td>eCDFP(eLearn Certified Digital Forensic Professionals)</td>
+                <td>INE Security</td>
+                <td>May 3, 2024</td>
+                <td>Never</td>
+                <td><a href="https://certs.ine.com/fb951e24-aa1f-4d4d-9abb-2f9d0570e6fa">eCDFP</a></td>
+                </tr>
+                <tr>
+                <td>CC (Certified In CyberSecurity)</td>
+                <td>(ISC)2</td>
+                <td>July 27,2023</td>
+                <td>July 2024</td>
+                <td>----</td>
+                </tr>
+                <tr>
+                <td>CND (Certified Network Defender)</td>
+                <td>EC-Council</td>
+                <td>July 2022</td>
+                <td>Jul 2025</td>
+                <td><a href="https://aspen.eccouncil.org/VerifyBadge?type=certification&a=xsTcEv4MD8WAnXxp6IHfHSgorW9V3ZbiCaOVob/8oa0=">CND</a></td>
+                </tr>
+            </table>
             <br>
             <div class="command-line"><span class="loading"></span></div>
             <center> Investigate. Decode. Educate </center>
-            </div>
-
+        </div>
 
 
 <style>
