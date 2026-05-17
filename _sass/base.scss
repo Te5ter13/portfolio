@@ -516,18 +516,26 @@ th {
 .social-links a {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  min-height: 36px;
   border: 1px solid var(--border-hot);
   border-radius: 6px;
   padding: 8px 12px;
   background: rgba(124, 255, 155, 0.06);
   color: var(--text);
   font-weight: 800;
+  font-size: 0.9rem;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .social-links a svg {
-  width: 16px;
-  height: 16px;
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px;
+  min-height: 16px;
+  display: block;
   flex-shrink: 0;
 }
 
@@ -729,6 +737,10 @@ th {
 }
 
 @media (max-width: 820px) {
+  #wrapper {
+    padding-top: 108px;
+  }
+
   .header-content {
     height: auto;
     min-height: 70px;
