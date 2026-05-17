@@ -1,48 +1,50 @@
 ---
-title: "Archive"
+title: "Case Files"
 layout: default
 ---
 
-<div class="container">
+<section class="feed-header case-file-header">
+  <p class="eyebrow" data-lang-de="Case Files" data-lang-en="Case Files">Case Files</p>
+  <h1 data-lang-de="Analysen und Writeups" data-lang-en="Analyses and writeups">Analysen und Writeups</h1>
+  <p data-lang-de="Alle aktuellen Untersuchungen, Labs und Writeups an einem Ort." data-lang-en="All current investigations, labs, and writeups in one place.">Alle aktuellen Untersuchungen, Labs und Writeups an einem Ort.</p>
+</section>
+
+<div class="story-feed">
   {% if site.posts.size > 0 %}
-    {% capture currentyear %}{{ 'now' | date: "%Y" }}{% endcapture %}
-    
-    {% assign previous_year = nil %}  <!-- Variable to track the previous year -->
-    
+    {% assign previous_year = nil %}
+
     {% for post in site.posts %}
-      {% assign post_year = post.date | date: '%Y' %}  <!-- Get the current post year -->
+      {% assign post_year = post.date | date: '%Y' %}
+      {% assign post_date_de = post.date | date: "%d.%m.%Y" %}
+      {% assign post_date_en = post.date | date: "%Y-%m-%d" %}
+      {% assign post_title_de = post.title_de | default: post.title %}
+      {% assign post_title_en = post.title %}
+      {% assign post_desc_de = post.description_de | default: post.description %}
+      {% assign post_desc_en = post.description %}
 
-      {% if post_year != previous_year %}  <!-- Check if it's a new year -->
-        {% if previous_year != nil %}  <!-- Close the previous year's section if not the first year -->
-          </div> <!-- Close previous post-container -->
-        {% endif %}
-
-        <h3>{{ post_year }}</h3>  <!-- Display the new year -->
-        <div class="post-container">  <!-- Start a new container for this year -->
+      {% if post_year != previous_year %}
+        <h2 class="archive-year">
+          <strong>{{ post_year }}</strong>
+        </h2>
       {% endif %}
-          
-      <div class="post-card">
-        <a href="{{ post.url }}" class="card-link">
-          <img src="{{ post.image }}" alt="{{ post.title }}" class="card-image">
-          <div class="card-content">
-            <h3>{{ post.title }}</h3>
-            <p class="metadata">{{ post.platform }} | {{ post.date | date: "%B %d, %Y" }} — {{ post.read_time }} min read</p>
-            <p class="author">By Manjil</p>
-            <p class="description-text">{{ post.description | escape }}</p>
-          </div>
-        </a>
-      </div>
-      
-      {% assign previous_year = post_year %}  <!-- Update previous year to the current post year -->
-    {% endfor %}
 
-    {% if previous_year != nil %}  <!-- Close the last year's container -->
-      </div>
-    {% endif %}
-    
+      <article class="post-card story-row">
+        <a href="{{ post.url }}" class="card-link">
+          <div class="story-copy">
+            <p class="metadata" data-lang-de="{{ post.platform }} &middot; {{ post_date_de }} &middot; {{ post.read_time }} Min. Lesezeit" data-lang-en="{{ post.platform }} &middot; {{ post_date_en }} &middot; {{ post.read_time }} min read">{{ post.platform }} &middot; {{ post_date_de }} &middot; {{ post.read_time }} Min. Lesezeit</p>
+            <h3 data-lang-de="{{ post_title_de | escape }}" data-lang-en="{{ post_title_en | escape }}">{{ post_title_de }}</h3>
+            <p class="description-text" data-lang-de="{{ post_desc_de | escape }}" data-lang-en="{{ post_desc_en | escape }}">{{ post_desc_de }}</p>
+            <p class="author" data-lang-de="Von Manjil" data-lang-en="By Manjil">Von Manjil</p>
+          </div>
+          {% if post.image %}
+          <img src="{{ post.image }}" alt="{{ post.title }}" class="card-image">
+          {% endif %}
+        </a>
+      </article>
+
+      {% assign previous_year = post_year %}
+    {% endfor %}
   {% else %}
-    <p>No posts found.</p>  <!-- Message if no posts exist -->
+    <p data-lang-de="Keine Beitr&auml;ge gefunden." data-lang-en="No posts found.">Keine Beitr&auml;ge gefunden.</p>
   {% endif %}
 </div>
-
-  

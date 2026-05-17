@@ -1,9 +1,8 @@
-<footer>
-  <a href="/">
-    <span>
-        <b>{{ site.owner}}</b>
-    </span>
+<footer class="site-footer">
+  <a href="{{ "/" | prepend: site.baseurl | replace: '//', '/' }}">
+    <span><b>{{ site.owner }}</b></span>
     {% capture currentyear %}{{ 'now' | date: "%Y" }}{% endcapture %}
-    <span>©{{ currentyear }}</span>
+    <span>&copy; {{ currentyear }}</span>
   </a>
+  <span class="footer-note">Malware Analysis &middot; Digital Forensics &middot; SOC Engineering</span>
 </footer>

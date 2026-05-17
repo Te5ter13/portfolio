@@ -3,23 +3,9 @@ permalink: /404.html
 layout: default
 ---
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
-</style>
-
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+<section class="section-intro">
+  <p class="eyebrow">404</p>
+  <h1 data-lang-de="Seite nicht gefunden" data-lang-en="Page not found">Seite nicht gefunden</h1>
+  <p data-lang-de="Die angeforderte Seite existiert nicht oder wurde verschoben." data-lang-en="The requested page does not exist or has been moved.">Die angeforderte Seite existiert nicht oder wurde verschoben.</p>
+  <a class="button primary" href="{{ "/" | prepend: site.baseurl | replace: '//', '/' }}" data-lang-de="Zur&uuml;ck zum Portfolio" data-lang-en="Back to portfolio">Zur&uuml;ck zum Portfolio</a>
+</section>

@@ -1,5 +1,5 @@
 ---
 layout: notes
-title: Notes
-permalink: /notes/
+title: Notizen
+permalink: /notes
 ---

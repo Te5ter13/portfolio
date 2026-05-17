@@ -1,11 +1,15 @@
 ---
 layout: post
 title:  "Diagnostic"
+title_de: "Diagnostic"
+title_en: "Diagnostic"
 date:   2023-06-27 00:55:38 +0545
 platform: "HackTheBox"
 read_time: 8
 image: /assets/Diagnostic/Diagnostic.png
 description: Our SOC has identified numerous phishing emails coming in claiming to have a document about an upcoming round of layoffs in the company. The emails all contain a link to diagnostic.htb/layoffs.doc. The DNS for that domain has since stopped resolving, but the server is still hosting the malicious document (your docker). Take a look and figure out what's going on.
+description_de: "Das SOC entdeckt Phishing-Mails mit einem angeblichen Dokument zu Entlassungen. Die Domain löst nicht mehr auf, aber der Server hostet weiterhin das bösartige Dokument."
+description_en: "The SOC finds phishing emails containing a supposed layoff document. DNS no longer resolves, but the server still hosts the malicious document."
 link: https://app.hackthebox.com/challenges/diagnostic
 signature: Investigate. Decode. Educate
 ---

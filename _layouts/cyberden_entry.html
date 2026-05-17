@@ -2,26 +2,29 @@
 layout: default
 ---
 
+{% assign page_date_de = page.date | date: "%d.%m.%Y" %}
+{% assign page_date_en = page.date | date: "%Y-%m-%d" %}
+
 <article>
-  
-  <h2><b>{{ page.title }}</b></h2>
-  <time datetime="{{ page.date | date_to_xmlschema }}" class="by-line">{{ page.date | date_to_string }}</time>
+  <p class="eyebrow">{{ page.platform | default: "CyberDen" }}</p>
+  <h1>{{ page.title }}</h1>
+  <time datetime="{{ page.date | date_to_xmlschema }}" class="by-line" data-lang-de="{{ page_date_de }}{% if page.read_time %} &middot; {{ page.read_time }} Min. Lesezeit{% endif %}" data-lang-en="{{ page_date_en }}{% if page.read_time %} &middot; {{ page.read_time }} min read{% endif %}">
+    {{ page_date_de }}{% if page.read_time %} &middot; {{ page.read_time }} Min. Lesezeit{% endif %}
+  </time>
+
+  {% if page.image %}
   <div class="featured-image-post">
-    <img src="{{- page.image | relative_url -}}" alt="">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
   </div>
-  <div class="desc">{{ page.description }}
-  </div>
-  <br>
+  {% endif %}
+
+  {% if page.description %}
+  <div class="desc">{{ page.description }}</div>
+  {% endif %}
+
   {{ content }}
-
 </article>
-<footer><h3>{{page.signature}}</h3></footer>
 
-<script>
-  const images = document.querySelectorAll('.zoomable'); 
-  images.forEach(image => {
-      image.addEventListener('click', function() {
-          image.classList.toggle('zoomed'); 
-      });
-  });
-</script>
+{% if page.signature %}
+<p class="signature">{{ page.signature }}</p>
+{% endif %}

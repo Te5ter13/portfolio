@@ -8,6 +8,6 @@ image: "/assets/notes_image/certificates/ecdfp.jpg"
 description: Notes for your path to earn a digital forensic certification. 
 author: Manjil
 signature: Investigate. Decode. Educate
-collection: forensics
-permalink: /digital_forensics/
+target_collection: forensics
+permalink: notes/digital-forensics
 ---

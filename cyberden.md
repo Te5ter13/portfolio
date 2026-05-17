@@ -1,5 +1,5 @@
 ---
 layout: cyberden
 title: CyberDen
-permalink: /cyberden/
+permalink: /cyberden
 ---

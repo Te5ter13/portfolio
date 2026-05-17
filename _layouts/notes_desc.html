@@ -3,15 +3,22 @@ layout: default
 ---
 
 <article>
-  
-  <h2><b>{{ page.title }}</b></h2>
-  <div class="featured-image-post">
-    <img src="{{- page.image | relative_url -}}" alt="">
-  </div>
-  <div class="desc">{{ page.description }}
-  </div>
-  <br>
-  {{ content }}
+  <p class="eyebrow">{{ page.platform | default: "Notiz" }}</p>
+  <h1>{{ page.title }}</h1>
 
+  {% if page.image %}
+  <div class="featured-image-post">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+  </div>
+  {% endif %}
+
+  {% if page.description %}
+  <div class="desc">{{ page.description }}</div>
+  {% endif %}
+
+  {{ content }}
 </article>
-<footer><h3>{{page.signature}}</h3></footer>
+
+{% if page.signature %}
+<p class="signature">{{ page.signature }}</p>
+{% endif %}

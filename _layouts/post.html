@@ -2,20 +2,44 @@
 layout: default
 ---
 
-<article>
-  
-  <h2><b>{{ page.title }}</b></h2>
-  <time datetime="{{ page.date | date_to_xmlschema }}" class="by-line">{{ page.date | date_to_string }}</time>
+{% assign page_date_de = page.date | date: "%d.%m.%Y" %}
+{% assign page_date_en = page.date | date: "%Y-%m-%d" %}
+{% assign page_title_de = page.title_de | default: page.title %}
+{% assign page_title_en = page.title %}
+{% assign page_desc_de = page.description_de | default: page.description %}
+{% assign page_desc_en = page.description %}
+
+<article class="article-shell">
+  <header class="article-header">
+    <p class="command-line">open case/{{ page.title | slugify }}.md</p>
+    <p class="eyebrow">{{ page.platform | default: "Analyse" }}</p>
+    <h1 data-lang-de="{{ page_title_de | escape }}" data-lang-en="{{ page_title_en | escape }}">{{ page_title_de }}</h1>
+    <time datetime="{{ page.date | date_to_xmlschema }}" class="by-line" data-lang-de="{{ page_date_de }}{% if page.read_time %} &middot; {{ page.read_time }} Min. Lesezeit{% endif %}" data-lang-en="{{ page_date_en }}{% if page.read_time %} &middot; {{ page.read_time }} min read{% endif %}">
+      {{ page_date_de }}{% if page.read_time %} &middot; {{ page.read_time }} Min. Lesezeit{% endif %}
+    </time>
+  </header>
+
+  {% if page.image %}
   <div class="featured-image-post">
-    <img src="{{- page.image | relative_url -}}" alt="">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
   </div>
-  <div class="desc">{{ page.description }}
-    <br>
-    <a href="{{ page.link }}">Goto Lab</a>
-  </div>
-  <br>
-  {{ content }}
+  {% endif %}
 
+  {% if page.description %}
+  <aside class="case-summary">
+    <p class="command-line">cat case_summary.txt</p>
+    <p data-lang-de="{{ page_desc_de | escape }}" data-lang-en="{{ page_desc_en | escape }}">{{ page_desc_de }}</p>
+    {% if page.link %}
+      <a href="{{ page.link }}" data-lang-de="Zum Lab" data-lang-en="Go to lab">Zum Lab</a>
+    {% endif %}
+  </aside>
+  {% endif %}
+
+  <div class="article-body">
+    {{ content }}
+  </div>
 </article>
-<footer><h3>{{page.signature}}</h3></footer>
 
+{% if page.signature %}
+<p class="signature">{{ page.signature }}</p>
+{% endif %}

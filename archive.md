@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Archive
+title: Archiv
 ---
 
 <section>
@@ -8,12 +8,12 @@ title: Archive
     {% capture currentyear %}{{ 'now' | date: "%Y" }}{% endcapture %}
     {% capture firstpostyear %}{{ site.posts[0].date | date: '%Y' }}{% endcapture %}
     {% if currentyear == firstpostyear %}
-        <h3>This year's posts</h3>
-    {% else %}  
+        <h3 data-lang-de="Beitr&auml;ge aus diesem Jahr" data-lang-en="Posts from this year">Beitr&auml;ge aus diesem Jahr</h3>
+    {% else %}
         <h3>{{ firstpostyear }}</h3>
     {% endif %}
 
-    {%for post in site.posts %}
+    {% for post in site.posts %}
       {% unless post.next %}
         <ul>
       {% else %}
@@ -25,7 +25,7 @@ title: Archive
           <ul>
         {% endif %}
       {% endunless %}
-        <li><time>{{ post.date | date:"%d %b" }} - </time>
+        <li><time>{{ post.date | date:"%d.%m" }} - </time>
           <a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">
             {{ post.title }}
           </a>

@@ -1,10 +1,14 @@
 ---
 layout: post
 title:  "Bucket"
+title_de: "Bucket"
+title_en: "Bucket"
 date:   2023-05-26 00:55:38 +0545\
 platform: "Cyberdefenders"
 read_time: 10
 image: /assets/Bucket/bucket.png
+description_de: "AWS-Incident-Response-Fall mit Logs aus dem Zeitraum des Vorfalls. Ziel ist es, Fehlkonfigurationen zu finden, die den Angriff ermöglicht haben."
+description_en: "AWS incident-response case with logs from the incident window. The goal is to find the misconfigurations that made the attack possible."
 description: Welcome, Defender! As an incident responder, we’re granting you access to the AWS account called “Security” as an IAM user. This account contains a copy of the logs during the time period of the incident and has the ability to assume the “Security” role in the target account so you can look around to spot the misconfigurations that allowed for this attack to happen.
 link: https://cyberdefenders.org/blueteam-ctf-challenges/84#nav-questions
 signature: Investigate. Decode. Educate

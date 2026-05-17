@@ -1,6 +1,6 @@
-title: Manjil@4n6
+title: Manjil Neupane | Cybersecurity Portfolio
 description: >- # this means to ignore newlines until "baseurl:"
-  I will help you learn some forensic stuffs.
+  Deutschsprachiges Cybersecurity-Portfolio mit Analysen zu Malware, Digital Forensics, Labs und CTF-Writeups.
 
 author:
   name: "Manjil"
@@ -30,27 +30,31 @@ plugins:
   - jekyll-paginate
 
 
-owner : "Manjil"
-year : "2024"
+owner : "Manjil Neupane"
+year : "2026"
 
 
 #For CyberDen
 collections:
   cyberden:
     output: true
-    permalink: /cyberden/:title/
+    permalink: /cyberden/:title
   notes:
     output: true
-    permalink: /notes/:name/
+    permalink: /notes/:name
   certificates:
     output: true
-    permalink: /certificates/:name/
+    permalink: /certificates/:name
   forensics:
     output: true
-    permalink: notes/digital-forensics/:title/
+    permalink: notes/digital-forensics/:title
   flare:
     output: true
-    permalink: notes/flare-on/:title/
+    permalink: notes/flare-on/:title
+  practicalmalware:
+    output: true
+    permalink: notes/practicalmalware/:title
+
 
 
 

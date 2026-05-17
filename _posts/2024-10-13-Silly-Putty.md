@@ -1,9 +1,13 @@
 ---
 layout: post
 title:  "Silly Putty"
+title_de: "Silly Putty"
+title_en: "Silly Putty"
 date:   2024-10-13 00:55:38 +0545
 read_time: 10
 image: /assets/silly_putty/1.png
+description_de: "Ein Helpdesk-Fall: Mehrere Admins melden ein Programm, das plötzlich abstürzt und blaue Fenster öffnet. Ziel ist eine statische und dynamische Analyse des verdächtigen Samples."
+description_en: "A help desk case: several admins report a program that suddenly crashes and opens blue windows. The goal is static and dynamic analysis of the suspicious sample."
 description: “Hello Analyst, The help desk has received a few calls from different IT admins regarding the attached program. They say that they've been using this program with no problems until recently. Now, it's crashing randomly and popping up blue windows when it's run. I don't like the sound of that. Do your thing! -- IR Team”
 link: https://github.com/HuskyHacks/PMAT-labs/tree/main/labs/1-3.Challenge-SillyPutty
 signature: Investigate. Decode. Educate
