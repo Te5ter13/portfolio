@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Über mich"
+title: "whoami"
 permalink: /whoami
 ---
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -91,5 +91,5 @@ permalink: /whoami
     if (output) {
       output.classList.remove("hidden");
     }
-  }, 6500);
+  }, 2000);
 </script>
