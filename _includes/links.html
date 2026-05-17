@@ -1,7 +1,29 @@
-<a class="header-link" href="{{ "/" | prepend: site.baseurl | replace: '//', '/' }}" data-lang-de="Portfolio" data-lang-en="Portfolio">Portfolio</a>
-<a class="header-link" href="{{ "/whoami" | prepend: site.baseurl | replace: '//', '/' }}" data-lang-de="&Uuml;ber mich" data-lang-en="About">&Uuml;ber mich</a>
-<a class="header-link" href="{{ "/cyberden" | prepend: site.baseurl | replace: '//', '/' }}">CyberDen</a>
-<a class="header-link" href="{{ "/notes" | prepend: site.baseurl | replace: '//', '/' }}" data-lang-de="Notizen" data-lang-en="Notes">Notizen</a>
+{% assign current_url = page.url | replace: 'index.html', '' %}
+{% assign is_about = false %}
+{% assign is_cyberden = false %}
+{% assign is_notes = false %}
+
+{% if current_url == '/whoami/' or current_url == '/whoami' %}
+  {% assign is_about = true %}
+{% endif %}
+
+{% if current_url == '/cyberden/' or current_url == '/cyberden' %}
+  {% assign is_cyberden = true %}
+{% endif %}
+{% if current_url contains '/cyberden/' %}
+  {% assign is_cyberden = true %}
+{% endif %}
+
+{% if current_url == '/notes/' or current_url == '/notes' %}
+  {% assign is_notes = true %}
+{% endif %}
+{% if current_url contains '/notes/' %}
+  {% assign is_notes = true %}
+{% endif %}
+
+<a class="header-link{% if is_about %} active{% endif %}" href="{{ "/whoami" | prepend: site.baseurl | replace: '//', '/' }}">About</a>
+<a class="header-link{% if is_cyberden %} active{% endif %}" href="{{ "/cyberden" | prepend: site.baseurl | replace: '//', '/' }}">CyberDen</a>
+<a class="header-link{% if is_notes %} active{% endif %}" href="{{ "/notes" | prepend: site.baseurl | replace: '//', '/' }}">Notes</a>
 
 <!--
 <a class="header-link" href="{{ "/atom.xml" | prepend: site.baseurl | replace: '//', '/' }}">RSS</a>
