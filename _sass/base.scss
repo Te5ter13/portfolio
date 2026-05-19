@@ -5,20 +5,20 @@
 @import "rouge-base16-dark";
 
 :root {
-  --bg: #050807;
-  --bg-soft: #0b1110;
-  --terminal: #0d1513;
-  --terminal-strong: #111c1a;
-  --panel: #101816;
-  --border: #20352f;
-  --border-hot: #2f7b68;
+  --bg: #020307;
+  --bg-soft: #070a12;
+  --terminal: #0b0f1a;
+  --terminal-strong: #131a2d;
+  --panel: #0a1220;
+  --border: #24314d;
+  --border-hot: #4a5f8f;
   --text: #e5eee9;
   --article: #f4f1e8;
   --article-ink: #181c1a;
-  --muted: #91a49c;
-  --green: #7CFF9B;
-  --green-soft: rgba(124, 255, 155, 0.12);
-  --cyan: #57d7ff;
+  --muted: #8fa0bf;
+  --green: #a6b9ff;
+  --green-soft: rgba(116, 139, 199, 0.18);
+  --cyan: #9ed0ff;
   --amber: #f4c96b;
   --red: #ff5f56;
   --yellow: #ffbd2e;
@@ -38,9 +38,9 @@ body {
   min-width: 320px;
   overflow-y: scroll;
   background:
-    linear-gradient(rgba(124, 255, 155, 0.03) 1px, transparent 1px),
-    radial-gradient(circle at 12% 0%, rgba(87, 215, 255, 0.12), transparent 28rem),
-    radial-gradient(circle at 88% 10%, rgba(124, 255, 155, 0.10), transparent 24rem),
+    linear-gradient(rgba(120, 145, 190, 0.025) 1px, transparent 1px),
+    radial-gradient(circle at 14% -4%, rgba(45, 82, 155, 0.10), transparent 34rem),
+    radial-gradient(circle at 86% 4%, rgba(20, 40, 84, 0.08), transparent 32rem),
     var(--bg);
   background-size: 100% 34px, auto, auto, auto;
   color: var(--text);
@@ -182,7 +182,7 @@ img {
 .certificate-card {
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: linear-gradient(180deg, rgba(17, 28, 26, 0.96), rgba(9, 15, 14, 0.96));
+  background: linear-gradient(180deg, rgba(16, 22, 38, 0.97), rgba(9, 13, 24, 0.97));
   box-shadow: var(--shadow);
 }
 
@@ -193,7 +193,7 @@ img {
   gap: 8px;
   padding: 0 14px;
   border-bottom: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.03);
+  background: linear-gradient(180deg, rgba(71, 86, 123, 0.45), rgba(35, 45, 70, 0.45));
 }
 
 .dot {
@@ -545,11 +545,31 @@ th {
 }
 
 .terminal-profile .terminal-window {
-  border-color: rgba(124, 255, 155, 0.28);
+  border: 1px solid #41527d;
+  border-radius: 4px;
+  background: #0b0f1a;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+}
+
+.terminal-profile .terminal-bar {
+  min-height: 36px;
+  background: linear-gradient(180deg, #5a6c97, #3d4d74);
+  border-bottom: 1px solid #2b3958;
+}
+
+.terminal-profile .terminal-title {
+  color: #d7e2ff;
 }
 
 .terminal-profile .terminal-body {
   font-family: "Fira Code", ui-monospace, SFMono-Regular, Consolas, monospace;
+  background: #0b0f1a;
+}
+
+.terminal-profile .command-line::before {
+  content: "manjil@4n6:~$ ";
+  color: #ff5f56;
+  font-weight: 900;
 }
 
 .terminal-profile .terminal-output {
