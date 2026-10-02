@@ -29,7 +29,7 @@ permalink: /whoami
     </div>
     <div class="terminal-body">
       <p class="command-line">whoami</p>
-      <p class="terminal-output">Cybersecurity Researcher | Malware Analyst | CTF Player</p>
+      <p class="terminal-output">Cybersecurity Researcher | Forensic Analyst </p>
 
       <p class="command-line">cat about.txt</p>
       <p class="terminal-output">I work on malware analysis, digital forensics, and SOC topics. This site is my working notebook: what I tested, what worked, what broke, and how I reached the result.</p>

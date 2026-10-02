@@ -22,6 +22,7 @@
   --amber: #f4c96b;
   --red: #ff5f56;
   --yellow: #ffbd2e;
+  --text-highlight-bg: rgb(165, 165, 28);
   --shadow: 0 18px 60px rgba(0, 0, 0, 0.38);
 }
 
@@ -44,7 +45,7 @@ body {
     var(--bg);
   background-size: 100% 34px, auto, auto, auto;
   color: var(--text);
-  font: 16px/1.7 "Fira Code", ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+  font: 18px/1.7 "Arial Rounded MT Bold", "Arial Rounded MT", Arial, sans-serif;
 }
 
 a {
@@ -430,7 +431,7 @@ p {
 
 .article-body p,
 .article-body li {
-  font: inherit;
+  font-family: "Lucida Fax", Georgia, "Times New Roman", serif;
   line-height: 1.7;
   color: var(--text);
 }
@@ -453,6 +454,165 @@ blockquote {
   border-left: 3px solid var(--green);
   background: var(--green-soft);
   color: var(--text);
+}
+
+mark,
+.obsidian-highlight {
+  border-radius: 3px;
+  padding: 0 4px;
+  background: var(--text-highlight-bg);
+  color: rgb(0, 0, 0);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.obsidian-callout {
+  margin: 26px 0;
+  border: 1px solid rgba(158, 208, 255, 0.28);
+  border-left: 4px solid var(--cyan);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(11, 15, 26, 0.98), rgba(7, 10, 18, 0.98));
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+.obsidian-callout-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(158, 208, 255, 0.16);
+  color: var(--cyan);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.obsidian-callout-title::before {
+  content: "i";
+  width: 22px;
+  height: 22px;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 22px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  color: currentColor;
+  font-size: 0.78rem;
+  line-height: 1;
+  text-transform: none;
+}
+
+.obsidian-callout-content {
+  padding: 16px;
+}
+
+.obsidian-callout-content > :last-child {
+  margin-bottom: 0;
+}
+
+.obsidian-callout-note,
+.obsidian-callout-info,
+.obsidian-callout-notice,
+.obsidian-callout-todo {
+  border-left-color: #9ed0ff;
+}
+
+.obsidian-callout-note .obsidian-callout-title::before {
+  content: "n";
+}
+
+.obsidian-callout-info .obsidian-callout-title::before {
+  content: "i";
+}
+
+.obsidian-callout-notice .obsidian-callout-title::before {
+  content: "*";
+}
+
+.obsidian-callout-todo .obsidian-callout-title::before {
+  content: "[]";
+}
+
+.obsidian-callout-tip,
+.obsidian-callout-success,
+.obsidian-callout-check,
+.obsidian-callout-done {
+  border-left-color: #7cff9b;
+}
+
+.obsidian-callout-tip .obsidian-callout-title::before {
+  content: ">";
+}
+
+.obsidian-callout-success .obsidian-callout-title::before,
+.obsidian-callout-check .obsidian-callout-title::before,
+.obsidian-callout-done .obsidian-callout-title::before {
+  content: "+";
+}
+
+.obsidian-callout-warning,
+.obsidian-callout-caution,
+.obsidian-callout-attention {
+  border-left-color: #ffbd2e;
+}
+
+.obsidian-callout-warning .obsidian-callout-title::before,
+.obsidian-callout-caution .obsidian-callout-title::before,
+.obsidian-callout-attention .obsidian-callout-title::before {
+  content: "!";
+}
+
+.obsidian-callout-danger,
+.obsidian-callout-error,
+.obsidian-callout-fail,
+.obsidian-callout-failure,
+.obsidian-callout-bug {
+  border-left-color: #ff5f56;
+}
+
+.obsidian-callout-danger .obsidian-callout-title::before,
+.obsidian-callout-error .obsidian-callout-title::before,
+.obsidian-callout-fail .obsidian-callout-title::before,
+.obsidian-callout-failure .obsidian-callout-title::before {
+  content: "x";
+}
+
+.obsidian-callout-bug .obsidian-callout-title::before {
+  content: "#";
+}
+
+.obsidian-callout-question,
+.obsidian-callout-help,
+.obsidian-callout-faq {
+  border-left-color: #c7a6ff;
+}
+
+.obsidian-callout-question .obsidian-callout-title::before,
+.obsidian-callout-help .obsidian-callout-title::before,
+.obsidian-callout-faq .obsidian-callout-title::before {
+  content: "?";
+}
+
+.obsidian-callout-quote,
+.obsidian-callout-cite,
+.obsidian-callout-example,
+.obsidian-callout-abstract,
+.obsidian-callout-summary {
+  border-left-color: var(--muted);
+}
+
+.obsidian-callout-quote .obsidian-callout-title::before,
+.obsidian-callout-cite .obsidian-callout-title::before {
+  content: '"';
+}
+
+.obsidian-callout-example .obsidian-callout-title::before {
+  content: "#";
+}
+
+.obsidian-callout-abstract .obsidian-callout-title::before,
+.obsidian-callout-summary .obsidian-callout-title::before {
+  content: "=";
 }
 
 pre {
